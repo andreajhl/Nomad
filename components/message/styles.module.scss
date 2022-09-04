@@ -1,0 +1,15 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.message {
+  height: 784px;
+  @include display-flex(center, center);
+  @include text(72px, 300, 98px, center);
+
+  h2 > span {
+    @include text(72px, 700, 98px, center);
+    color: $white-01;
+    padding: 0px 12px 0px;
+    background-color: $blue-01;
+  }
+}

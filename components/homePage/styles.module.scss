@@ -1,0 +1,23 @@
+@import './styles/variables';
+@import './styles/mixins';
+
+.container {
+  padding: 0;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  padding: 4rem 0;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.message {
+  height: 195px;
+  margin-top: 80px;
+  color: $white-01;
+  background-color: $blue-01;
+  @include text(72px, 300, 98px);
+  @include display-flex(center, center);
+}
