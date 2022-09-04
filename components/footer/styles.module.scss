@@ -1,0 +1,38 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.info {
+  width: 100%;
+  padding-left: 60px;
+  @include display-flex(space-between, center);
+
+  div {
+    width: 310px;
+  }
+}
+
+.netWorks {
+  margin-top: 15px;
+  @include display-flex(space-between, center);
+
+  svg:hover {
+    cursor: pointer; 
+    &:first-child > path,
+    &:nth-child(3) > path {
+      fill: $blue-01;
+    }
+
+    &:nth-child(2) > path {
+      fill: $red-01;
+    }
+
+    &:last-child > path {
+      fill: $pink-01
+    }
+  }
+}
+
+.contact > h3 {
+  margin: 10px 0px 10px;
+  @include text(24px, 600, 32px);
+}
