@@ -1,0 +1,58 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.nav {
+  width: 600px;
+  height: 64px;
+  padding: 8px;
+
+
+  right: 40px;
+  display: block;
+  position: fixed;
+  transition: top 0.3s;
+  background-color: $white-01;
+  @include text(15px, 400, 24px, center);
+  @include border(none, none, 16px);
+
+  [role="tablist"] {
+    @include display-flex(space-around, center);
+
+    button {
+      padding: 0;
+      background: none;
+      font-weight: 400;
+
+      &:nth-child(4n){
+        width: 60px;
+        justify-content: space-between;
+        @include border(right, $black-02);
+      }
+
+      &:last-child {
+        width: 129px;
+        color: $white-01;
+        padding: 12px 16px;
+        background: $blue-01;
+        justify-content: space-between;
+        @include border(all, $blue-01, 8px)
+      }
+    }
+  }
+
+  [role="dialog"] {
+    width: 146px;
+    inset: 20px auto auto 0px;
+
+    
+    div {
+      @include display-flex(space-around, center, column);
+      height: 170px;
+    }
+  }
+}
+
+.chakra-tabs {
+}
+
+

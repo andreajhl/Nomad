@@ -1,0 +1,33 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.pagination {
+  width: 400px;
+  height: 100px;
+  bottom: 5em;
+  left: 5em;
+  z-index: 99;
+  position: absolute;
+  @include display-flex(space-between, top);
+}
+
+.progress {
+  width: 114px;
+  color: $white-01;
+  @include display-flex(baseline, left, column);
+  @include border(all, none, 16px);
+
+  [role="progressbar"] {
+    background-color: $white-01;
+  }
+
+  p {
+    @include text(13px, normal, 20px);
+  }
+
+  h4 {
+    @include text(15px, 600, 24px);
+    margin: 5px 0px 20px;
+    letter-spacing: 0.04em;
+  }
+}  

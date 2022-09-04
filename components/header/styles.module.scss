@@ -1,0 +1,41 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.header {
+  height: 800px;
+  @include display-flex(inherit, inherit, column);
+
+  h1 {
+    width: 480px;
+    color: $white-01;
+    @include text(100px, 900, 110px);
+  }
+}
+
+.hero {
+  position: relative;
+
+  [class='swiper-wrapper'] > div {
+    @include display-flex(center, inherit, column);
+  }
+}
+
+.content {
+  padding: 30px 85px 0px 60px;
+  position: absolute;
+  z-index: 2;
+  top: 16em;
+}
+
+.navbar {
+  z-index: 2;
+  width: 100%;
+  position: absolute;
+  padding: 32px 85px 0px 60px;
+  @include display-flex(space-between, flex-start);
+
+  span {
+    @include border(none, none, 16px);
+    box-shadow: 5px 5px 10px $gray-01;
+  }
+}
