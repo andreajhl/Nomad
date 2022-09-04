@@ -1,0 +1,132 @@
+@import '../../../styles/mixins';
+@import '../../../styles/variables';
+
+.card {
+  width: 624px;
+  height: 432px;
+}
+
+.image {
+  position: relative;
+  overflow: hidden;
+}
+
+.information {
+  top: 256px;
+  right: 120px;
+  width: 386px;
+  height: 134px;
+  padding: 24px;
+  cursor: pointer;
+  color: $white-01;
+  overflow: hidden;
+  position: absolute;
+
+  @include border(all, none, 16px);
+
+  p {
+    @include text(17px, 400, 28px);
+
+    svg {
+      display: inline;
+      align-items: center;
+      color: $white-01;
+    }
+  }
+
+  &.urban {
+    background-color: $blue-01;
+
+    h4 {
+      font-family: 'Noto Sans', sans-serif;
+      @include text(50px, 900, 58px);
+      letter-spacing: 0.2em;
+    }
+  }
+
+  &.tribe {
+    background-color: $black-02;
+
+    h4 {
+      font-family: 'Caveat', cursive;
+      @include text(70px, 800, 58px);
+    }
+  }
+
+  &.family {
+    background-color: $pink-01;
+
+    h4 {
+      font-family: 'Josefin Slab', serif;
+      @include text(57px, 700, 61px);
+    }
+  }
+}
+
+.hiddenInfo {
+  .information {
+    height: 134px;
+    transition: all 1s ease;
+
+    .completeInformation {
+      opacity: 0;
+      transition: all 0.8s ease;
+    }
+  }
+
+  .completeInformation {
+    visibility: hidden;
+    transition: all 1s ease;
+  }
+}
+
+.visibleInfo {
+  .information {
+    transition: all 0.8s ease;
+    height: 295px;
+    top: 100px;
+
+    &.urban {
+      background-color: $blue-gradient;
+    }
+  
+    &.tribe {
+      background-color: $black-gradient;
+    }
+  
+    &.family {
+      background-color: $pink-gradient;
+    }
+  }
+
+  .urban > .completeInformation > footer{
+    @include border(top, $white-01)
+  }
+
+  .tribe > .completeInformation > footer {
+    @include border(top, $green)
+  }
+
+  .family > .completeInformation > footer {
+    @include border(top, $white-01)
+  }
+
+  .completeInformation {
+    visibility: visible;
+    transition: all 1s ease;
+  
+    p {
+      margin: 15px 0px 15px;
+      @include text(15px, 400, 24px);
+    }
+  }
+}
+
+.services {
+  @include display-flex(left, center);
+
+  svg {
+    color: $white-01;
+    margin-right: 15px;
+  }
+}

@@ -1,0 +1,28 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.container {
+  width: 90%;
+  height: 776px;
+  border-radius: 10px;
+  background-color: $gray-02;
+}
+
+.containerCarousel {
+  padding-left: 50px;
+  width: 110%;
+}
+
+.containerText {
+  width: 650px;
+  padding: 50px;
+
+  h2 {
+    @include text(48px, 600, 56px);
+    margin-bottom: 23px;
+  }
+
+  p {
+    @include text(20px, 300, 32px);
+  }
+}
