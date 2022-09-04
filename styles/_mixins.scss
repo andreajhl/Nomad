@@ -1,0 +1,34 @@
+@mixin display-flex ($justify-content, $align-items: center, $direction: row, $flow: row nowrap) {
+  display: flex;
+  align-items: $align-items;
+  justify-content: $justify-content;
+  flex-flow: $flow;
+  flex-direction: $direction;
+}
+
+@mixin text ( $size: 16px, $weight: normal, $lineHeight: normal, $align: left) {
+  font-size: $size;
+  text-align: $align;
+  font-weight: $weight;
+  line-height: $lineHeight;
+}
+
+@mixin border($direction, $color, $radius: 0px, $width: 1px, $style: solid) {
+  @if $radius {
+    border-radius: $radius;
+  }
+
+  @if $color == none {
+    @if $direction == all {
+      border: none;
+    } @else {
+      border-#{$direction}: none;
+    }
+  } @else {
+    @if $direction == all {
+      border: $width $style $color;
+    } @else {
+      border-#{$direction}: $width $style $color;
+    }
+  }
+}
