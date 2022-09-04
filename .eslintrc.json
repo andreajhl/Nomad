@@ -1,0 +1,21 @@
+{
+  "extends": "bragi",
+  "plugins": ["jest"],
+  "rules": {
+    "nordic/i18n-jsx-no-literals": 0,
+    "import/no-extraneous-dependencies": [
+      "off",
+      {
+        "devDependencies": true
+      }
+    ],
+    "import/prefer-default-export": 0,
+    "camelcase": 0,
+    "security/detect-object-injection": 0,
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true
+  }
+}
