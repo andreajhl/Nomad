@@ -1,0 +1,55 @@
+@import '../../../styles/mixins';
+@import '../../../styles/variables';
+
+.card {
+  height: 328px;
+  column-gap: 15px;
+  @include border(top, $gray-02);
+  @include display-flex(space-around, center);
+}
+
+.cardBody {
+  width: 350px;
+  height: 257px;
+  @include display-flex(space-between, left, column);
+
+  .urban {
+    font-family: 'Noto Sans', sans-serif;
+    @include text(34px, 900, 58px);
+    letter-spacing: 0.2em;
+  }
+
+  .tribe {
+    font-family: 'Caveat', cursive;
+    @include text(50px, 900, 58px);
+  }
+
+  .family {
+    font-family: 'Josefin Slab', serif;
+    @include text(34px, 900, 61px);
+  }
+
+  button {
+    width: 137px;
+    padding: 12px;
+    color: $white-01;
+    background: $blue-01;
+    justify-content: space-between;
+    @include text(15px, 600, 24px);
+    @include border(all, $blue-01, 8px);
+  }
+}
+
+.presentation {
+  @include text(15px, normal, 24px);
+  letter-spacing: 0.04em;
+}
+
+.description {
+  @include text(13px, normal, 20px);
+  color: $gray-03;
+}
+
+.price > span{
+  @include text(15px, 900, 24px);
+}

@@ -1,0 +1,7 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.title {
+  @include text(48px, 600, 56px);
+  letter-spacing: -0.02em;
+}
