@@ -9,12 +9,12 @@ import Header from '../header/header';
 import Message from '../message/message';
 import Carousel from '../carousel/carousel';
 import DrawerReserve from '../drawer/drawer';
+import CustomMouse from '../cursor/cursor';
 
 import styles from './styles.module.scss';
 
 const HomePage = () => {
   const [isOpen, setIsOpen] = useState(false);
-
   const { data }: UseQueryResult<string> = useQuery<string>('message', () => useFetch(PATH_MESSAGE));
 
   return (
@@ -32,6 +32,7 @@ const HomePage = () => {
         <Footer />
         <div className={styles.message}>{`Gracias por scrollear :)`}</div>
       </footer>
+      <CustomMouse/>
     </div>
   );
 };

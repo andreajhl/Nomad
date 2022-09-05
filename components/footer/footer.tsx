@@ -1,8 +1,11 @@
-import Image from 'next/image';
-import { IconsNetWorks, Footer as IntFooter } from '../../interfaces';
-import { useFetch } from '../../hooks/useFetch';
+import { PointerEvent, useContext } from "react";
+import { CursorContext } from '../../context/cursorContext';
 import { UseQueryResult, useQuery} from 'react-query';
+import { useFetch } from '../../hooks/useFetch';
+import Image from 'next/image';
+
 import { PATH_FOOTER } from '../../constants';
+import { IconsNetWorks, Footer as IntFooter } from '../../interfaces';
 
 import logo from '../../public/images/logo.png';
 import Youtube from '../../public/svg/socialNetworks/youtube';
@@ -25,9 +28,17 @@ const configLogo = {
   alt:"Logo Nomad",
 };
 
+
 export const Footer = () => {
+  const { setElement } = useContext(CursorContext);
+
   const { data }: UseQueryResult<IntFooter> = useQuery<IntFooter>('footer', () => useFetch(PATH_FOOTER));
   const renderIcons = (key: string) => icons[key as keyof IconsNetWorks]();
+
+  const useMouseStyleConfig = ({target, type}: PointerEvent, text: string = '') => {
+    let element = target as HTMLElement;
+    return type === 'pointerleave' ? setElement({text: '', type: ''}) : setElement({ text, type: element.tagName});
+  };
 
   return (
     <div className={styles.info}>
@@ -36,7 +47,9 @@ export const Footer = () => {
         <p>{data?.enterprise?.message}</p>
         <div className={styles.netWorks}>
           {
-            data?.enterprise?.socialNetworks.map(e => renderIcons(e))
+            data?.enterprise?.socialNetworks.map(element => (
+              <a key={element} onPointerEnter={useMouseStyleConfig} onPointerLeave={useMouseStyleConfig}>{renderIcons(element)}</a>
+            ))
           }          
         </div>
       </div>
@@ -45,13 +58,15 @@ export const Footer = () => {
         <p>T: {data?.contact?.tlf}</p>
         <p>E: {data?.contact?.email}</p>
       </div>
-      <div>
+      <div className={styles.services}>
         {
-          data?.services?.map(e=> <p key={e}>{e}</p>)
+          data?.services?.map(element => (
+            <a key={element} onPointerEnter={useMouseStyleConfig} onPointerLeave={useMouseStyleConfig}>{element}</a>
+          ))
         }
       </div>
     </div>
-  )
+  );
 };
 
 export default Footer;
