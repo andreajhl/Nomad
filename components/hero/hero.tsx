@@ -31,5 +31,4 @@ const Hero = ({listHero, setIndexSlide}: IntHero) => (
   </Swiper>
 );
 
-
 export default Hero;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ItemCarousel, IconsServices } from '../../../interfaces';
 
 import Image from 'next/image';
@@ -20,14 +20,15 @@ const Card = ({
   const [expand, setExpand] = useState(false);
 
   const classCard = title.toLowerCase();
+
   const icons: IconsServices = {
-    room: Room,
-    coWork: CoWork,
-    food: Food,
-    activities: Activities
+    room: <Room key='room'/>,
+    coWork: <CoWork  key='coWork'/>,
+    food: <Food key='food'/>,
+    activities: <Activities key='activities'/>
   };
 
-  const renderIcons = (key: string) => icons[key as keyof IconsServices]()
+  const renderIcons = (key: string) => icons[key as keyof IconsServices];
 
   return (
     <div className={`${styles.card} ${expand ? styles.visibleInfo : styles.hiddenInfo}`}>
@@ -39,7 +40,7 @@ const Card = ({
         height={432}
         className={styles.image}
       />
-      <div className={`${styles.information} ${styles[classCard]}`} onClick={()=>setExpand(!expand)}>
+      <div className={`${styles.information} ${styles[classCard]}`} onClick={() => setExpand(!expand)}>
         <p>
           <LocationPoint />
           {location}
@@ -58,7 +59,7 @@ const Card = ({
         </div>
       </div>
     </div>
-  )
+  );
 };
 
 export default Card;

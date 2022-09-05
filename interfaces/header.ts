@@ -2,10 +2,9 @@ import { Dispatch, SetStateAction } from "react";
 import { StaticImageData } from 'next/image';
 
 export type ItemNav = {
-  title:           string;
-  listExperiment?: string[];
+  title:           string,
+  listExperiment?: string[],
 };
-
 export interface Nav {
   list?:     ItemNav[],
   setIsOpen: Dispatch<SetStateAction<boolean>>,

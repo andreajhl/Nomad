@@ -1,16 +1,14 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import { useFetch } from '../../hooks/useFetch';
 import { UseQueryResult, useQuery} from 'react-query';
 import { ItemHero, ItemNav } from '../../interfaces';
 import { PATH_NAV, PATH_SLIDE } from '../../constants';
 
-import Hero from '../hero/hero';
 import styles from './styles.module.scss';
-
-import Image from 'next/image';
+import Hero from '../hero/hero';
 import logo from '../../public/images/logo.png';
-
 import Pagination from '../pagination/pagination';
 
 const Navbar = dynamic(() => import("../nav/nav"), {ssr: false});
@@ -45,6 +43,4 @@ const Header = ({setIsOpen}:{setIsOpen:Dispatch<SetStateAction<boolean>>}) => {
   );
 };
 
-
 export default Header;
-

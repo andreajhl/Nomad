@@ -9,6 +9,7 @@ const Pagination = ({ listHero, indexSlide}: Pagination) => {
 
   useEffect(() => {
     setCount(0);
+
     const interval = setInterval(() => {
       setCount(count => {
         const newCount: number = count + 2;
@@ -16,8 +17,11 @@ const Pagination = ({ listHero, indexSlide}: Pagination) => {
         newCount === 100 && clearInterval(interval);
         return newCount;
       });
+
     }, time);
-    time !== 230 && setTime(230)
+
+    time !== 230 && setTime(230);
+
   }, [indexSlide]);
 
   return (

@@ -1,4 +1,3 @@
-import React from 'react';
 import { ItemCarousel } from '../../../interfaces';
 
 import { Swiper, SwiperSlide } from 'swiper/react';

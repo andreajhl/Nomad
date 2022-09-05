@@ -1,4 +1,5 @@
 import { StaticImageData } from 'next/image';
+import { ReactElement } from 'react';
 
 export interface ItemCarousel {
   title:       string,
@@ -9,10 +10,10 @@ export interface ItemCarousel {
 };
 
 export interface IconsServices {
-  room:       () => JSX.Element,
-  coWork:     () => JSX.Element,
-  food:       () => JSX.Element,
-  activities: () => JSX.Element,
+  room:       ReactElement,
+  coWork:     ReactElement,
+  food:       ReactElement,
+  activities: ReactElement,
 };
 
 export interface IntMessage {

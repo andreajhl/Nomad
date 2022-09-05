@@ -19,7 +19,7 @@ const Carousel = () => {
         <Slider listItem={data}/>
       </div>
     </div>
-  )
+  );
 };
 
 export default Carousel;

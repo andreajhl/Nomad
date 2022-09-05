@@ -1,4 +1,4 @@
-import Image, { ImageLoader } from 'next/image';
+import Image from 'next/image';
 import { CardDrawer } from '../../../interfaces';
 
 import styles from './styles.module.scss'
@@ -21,6 +21,5 @@ const Card = ({title, url, presentation, description, price}: CardDrawer) => (
     </div>
   </div>
 );
-
 
 export default Card;
