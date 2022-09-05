@@ -1,4 +1,5 @@
-import { useState, useEffect, ReactElement, ComponentElement } from "react";
+import { PointerEvent, useContext, useEffect } from "react";
+import { CursorContext } from '../../context/cursorContext';
 import {
   Tab,
   Tabs,
@@ -13,12 +14,12 @@ import styles from './styles.module.scss';
 import Calendar from "../../public/svg/services/calendar";
 
 import { Nav } from '../../interfaces';
-import { RESERVE, EXPERIMENT} from "../../constans";
+import { RESERVE, EXPERIMENT} from "../../constants";
 
 type Experiences = {
   title: string,
   listExperiment?: string[],
-}
+};
 
 const ListExperiences = ({ title, listExperiment }: Experiences) => (
   <Popover>
@@ -28,7 +29,7 @@ const ListExperiences = ({ title, listExperiment }: Experiences) => (
     <PopoverContent>
       <PopoverBody>
         {
-          listExperiment?.map(e => <p>{e}</p>)
+          listExperiment?.map(e => <p key={e}>{e}</p>)
         }
       </PopoverBody>
     </PopoverContent>
@@ -36,8 +37,8 @@ const ListExperiences = ({ title, listExperiment }: Experiences) => (
 );
 
 
-
 const Navbar = ({list, setIsOpen}: Nav) => {
+  const { setElement } = useContext(CursorContext);
   let scroll = window.pageYOffset;
 
   const handleClick = (e: string) => e === RESERVE && setIsOpen(true);
@@ -48,12 +49,17 @@ const Navbar = ({list, setIsOpen}: Nav) => {
 
     navbar && (navbar.style.top = scroll > currentScroll ? "33px" : "-70px");
 
-    scroll = currentScroll
+    scroll = currentScroll;
   }
-  
+
+  const useMouseStyleConfig = ({target, type}: PointerEvent, text: string) => {
+    let element = target as HTMLElement;
+    return type === 'pointerleave' ? setElement({text: '', type: ''}) : setElement({ text, type: element.tagName})
+  };
+
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll)
-    return () =>  window.removeEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll);
+    return () =>  window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -61,7 +67,12 @@ const Navbar = ({list, setIsOpen}: Nav) => {
       <TabList>
         {
           list?.map(({title, listExperiment}) => (
-            <Tab key={title} onClick={()=>handleClick(title)} >
+            <Tab
+              key={title}
+              onClick={()=>handleClick(title)}
+              onPointerEnter={(e) => useMouseStyleConfig(e, title)}
+              onPointerLeave={(e) => useMouseStyleConfig(e, title)}
+            >
               {title === RESERVE && <Calendar />}
               {title === EXPERIMENT ? <ListExperiences title={title} listExperiment={listExperiment}/>  : title}
             </Tab>
@@ -69,7 +80,7 @@ const Navbar = ({list, setIsOpen}: Nav) => {
         }
       </TabList>
     </Tabs>
-  )
+  );
 };
 
 export default Navbar;

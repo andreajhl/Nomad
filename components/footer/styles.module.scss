@@ -15,24 +15,36 @@
   margin-top: 15px;
   @include display-flex(space-between, center);
 
-  svg:hover {
-    cursor: pointer; 
-    &:first-child > path,
-    &:nth-child(3) > path {
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    &:first-child:hover > svg > path,
+    &:nth-child(3):hover > svg > path {
       fill: $blue-01;
     }
 
-    &:nth-child(2) > path {
+    &:nth-child(2):hover > svg > path {
       fill: $red-01;
     }
 
-    &:last-child > path {
+    &:last-child:hover > svg > path {
       fill: $pink-01
     }
   }
 }
 
-.contact > h3 {
-  margin: 10px 0px 10px;
-  @include text(24px, 600, 32px);
+.contact {
+  h3 {
+    margin: 10px 0px 15px;
+    @include text(24px, 600, 32px);
+  }
+
+  p {
+    margin-bottom: 10px;
+  }
+}
+
+.services > a {
+  display: block;
+  text-decoration: none;
 }
