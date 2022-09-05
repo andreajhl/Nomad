@@ -20,4 +20,4 @@ export interface IntMessage {
   lineOne:       string,
   lineTwo:       string,
   wordHighlight: string
-}
+};

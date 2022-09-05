@@ -9,7 +9,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 
-const Hero = ({listHero, setIndexSlide}: IntHero) => (
+const Hero = ({ listHero, setIndexSlide }: IntHero) => (
   <Swiper
     modules={[Pagination, Autoplay]}
     pagination={{ clickable: true }}

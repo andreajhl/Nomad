@@ -6,9 +6,7 @@ import { ItemNav, ItemHero, ItemCarousel, Footer } from '../interfaces';
 import { PATH_CAROUSEL, PATH_SLIDE, PATH_FOOTER, PATH_NAV, PATH_MESSAGE } from '../constants';
 import HomePage from '../components/homePage/homePage';
 
-const Home: NextPage = () => (
-  <HomePage />
-)
+const Home: NextPage = () => <HomePage />;
 
 export default Home;
 

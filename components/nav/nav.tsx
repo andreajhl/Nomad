@@ -37,13 +37,13 @@ const ListExperiences = ({ title, listExperiment }: Experiences) => (
 );
 
 
-const Navbar = ({list, setIsOpen}: Nav) => {
+const Navbar = ({ list, setIsOpen }: Nav) => {
   const { setElement } = useContext(CursorContext);
-  let scroll = window.pageYOffset;
+  let scroll: number = window.pageYOffset;
 
   const handleClick = (e: string) => e === RESERVE && setIsOpen(true);
 
-  const handleScroll = () => {
+  const handleScroll = (): void => {
     let navbar: HTMLElement | null = document.querySelector('.chakra-tabs ');
     let currentScroll = window.pageYOffset;
 
@@ -52,14 +52,14 @@ const Navbar = ({list, setIsOpen}: Nav) => {
     scroll = currentScroll;
   }
 
-  const useMouseStyleConfig = ({target, type}: PointerEvent, text: string) => {
+  const useMouseStyleConfig = ({ target, type }: PointerEvent, text: string): void => {
     let element = target as HTMLElement;
     return type === 'pointerleave' ? setElement({text: '', type: ''}) : setElement({ text, type: element.tagName})
   };
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
-    return () =>  window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (

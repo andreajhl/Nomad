@@ -3,7 +3,7 @@ import { Pagination } from '../../interfaces';
 import { Progress } from '@chakra-ui/react';
 import styles from './styles.module.scss';
 
-const Pagination = ({ listHero, indexSlide}: Pagination) => {
+const Pagination = ({ listHero, indexSlide }: Pagination) => {
   const [count, setCount] = useState<number>(0);
   const [time, setTime] = useState<number>(190);
 

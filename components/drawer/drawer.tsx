@@ -4,7 +4,6 @@ import { useFetch } from '../../hooks/useFetch';
 import { IntDrawer, CardDrawer } from '../../interfaces';
 import { PATH_RESERVE } from '../../constants';
 import {
-  Button,
   Drawer,
   DrawerBody,
   DrawerHeader,
@@ -16,7 +15,7 @@ import Card from './card/card';
 
 import styles from './styles.module.scss';
 
-const DrawerReserve = ({isOpen, setIsOpen }: IntDrawer) => {
+const DrawerReserve = ({ isOpen, setIsOpen }: IntDrawer) => {
   const [list, setList] = useState<CardDrawer[] | [] >([]);
   
   const { data } = useQuery<CardDrawer[]>("listReserve", () => useFetch(PATH_RESERVE));

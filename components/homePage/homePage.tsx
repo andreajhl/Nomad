@@ -14,7 +14,7 @@ import CustomMouse from '../cursor/cursor';
 import styles from './styles.module.scss';
 
 const HomePage = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const { data }: UseQueryResult<string> = useQuery<string>('message', () => useFetch(PATH_MESSAGE));
 
   return (

@@ -17,9 +17,9 @@ const Card = ({
   location,
   description,
 }: ItemCarousel ) => {
-  const [expand, setExpand] = useState(false);
+  const [expand, setExpand] = useState<boolean>(false);
 
-  const classCard = title.toLowerCase();
+  const classCard: string = title.toLowerCase();
 
   const icons: IconsServices = {
     room: <Room key='room'/>,

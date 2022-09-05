@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 import dynamic from 'next/dynamic';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import { useFetch } from '../../hooks/useFetch';
 import { UseQueryResult, useQuery} from 'react-query';
 import { ItemHero, ItemNav } from '../../interfaces';
@@ -11,20 +11,27 @@ import Hero from '../hero/hero';
 import logo from '../../public/images/logo.png';
 import Pagination from '../pagination/pagination';
 
+type TypeConfigLogo = {
+  src: StaticImageData,
+  width: number,
+  height: number,
+  alt: string,
+};
+
+const configLogo: TypeConfigLogo = {
+  src: logo,
+  width: 142,
+  height: 64,
+  alt: "Logo Nomad",
+};
+
 const Navbar = dynamic(() => import("../nav/nav"), {ssr: false});
 
-const Header = ({setIsOpen}:{setIsOpen:Dispatch<SetStateAction<boolean>>}) => {
+const Header = ({ setIsOpen }:{ setIsOpen:Dispatch<SetStateAction<boolean>> }) => {
   const [indexSlide, setIndexSlide] = useState<number>(0);
 
   const { data: list }: UseQueryResult<ItemNav[]> = useQuery<ItemNav[]>('list', () => useFetch(PATH_NAV));
-  const { data: listHero}: UseQueryResult<ItemHero[]> = useQuery<ItemHero[]>('listHero', () => useFetch(PATH_SLIDE));
-
-  const configLogo = {
-    src: logo,
-    width: 142,
-    height: 64,
-    alt:"Logo Nomad",
-  };
+  const { data: listHero }: UseQueryResult<ItemHero[]> = useQuery<ItemHero[]>('listHero', () => useFetch(PATH_SLIDE));
 
   return (
     <header className={styles.header}>

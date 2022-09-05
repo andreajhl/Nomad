@@ -5,13 +5,13 @@ type MouseProsition = {
   y: number,
 };
 
-export const useMousePosition = () => {
+export const useMousePosition = (): MouseProsition => {
   const [mousePosition, setMousePosition] = useState<MouseProsition>({
     x: 0,
     y: 0,
   });
 
-  const mouseMoveHandler = (event: MouseEvent) => {
+  const mouseMoveHandler = (event: MouseEvent): void => {
     const { clientX, clientY } = event;
 
     setMousePosition({

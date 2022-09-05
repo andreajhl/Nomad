@@ -3,7 +3,7 @@ import { CardDrawer } from '../../../interfaces';
 
 import styles from './styles.module.scss'
 
-const Card = ({title, url, presentation, description, price}: CardDrawer) => (
+const Card = ({ title, url, presentation, description, price }: CardDrawer) => (
   <div className={styles.card}>
     <Image
       src={url}

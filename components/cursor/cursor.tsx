@@ -13,14 +13,14 @@ type PropsElement = {
 };
 
 const CustomMouse = () => {
-  const [style, setStyle] = useState('');
+  const [style, setStyle] = useState<string>('');
 
   const { x, y } = useMousePosition();
-  const { element } = useContext(CursorContext);
+  const { element }= useContext(CursorContext);
 
-  const definedClass = (value: PropsElement) => {
-    let type = value.type.toLowerCase();
-    const elements = ['svg', 'path', 'a'];
+  const definedClass = (value: PropsElement): string => {
+    let type: string = value.type.toLowerCase();
+    const elements: string[] = ['svg', 'path', 'a'];
 
     if(type === 'button' && value.text === RESERVE) return 'modifyCursor';
     return elements.includes(type) ? 'expand' : '';

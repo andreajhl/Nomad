@@ -1,9 +1,8 @@
 import styles from './styles.module.scss';
 
-const Message = ({ text = '' }: {text?: string}) => {
+const Message = ({ text = '' }: { text?: string }) => {
   const WORD_HIGHLIGHT = 'aventuras locales';
-
-  const [line1, line2] = text?.split(WORD_HIGHLIGHT);
+  const [line1, line2]: string[] = text?.split(WORD_HIGHLIGHT);
 
   return (
     <div className={styles.message}>

@@ -1,4 +1,5 @@
 import { PointerEvent, useContext } from "react";
+import { StaticImageData } from 'next/image';
 import { CursorContext } from '../../context/cursorContext';
 import { UseQueryResult, useQuery} from 'react-query';
 import { useFetch } from '../../hooks/useFetch';
@@ -21,13 +22,19 @@ const icons: IconsNetWorks = {
   instagram: Instagram,
 };
 
-const configLogo = {
+type TypeConfigLogo = {
+  src: StaticImageData,
+  width: number,
+  height: number,
+  alt: string,
+};
+
+const configLogo: TypeConfigLogo = {
   src: logo,
   width: 142,
   height: 64,
   alt:"Logo Nomad",
 };
-
 
 export const Footer = () => {
   const { setElement } = useContext(CursorContext);
@@ -35,9 +42,9 @@ export const Footer = () => {
   const { data }: UseQueryResult<IntFooter> = useQuery<IntFooter>('footer', () => useFetch(PATH_FOOTER));
   const renderIcons = (key: string) => icons[key as keyof IconsNetWorks]();
 
-  const useMouseStyleConfig = ({target, type}: PointerEvent, text: string = '') => {
+  const useMouseStyleConfig = ({ target, type }: PointerEvent, text?: string ): void => {
     let element = target as HTMLElement;
-    return type === 'pointerleave' ? setElement({text: '', type: ''}) : setElement({ text, type: element.tagName});
+    type === 'pointerleave' ? setElement({text: '', type: ''}) : setElement({ text: text || '', type: element.tagName});
   };
 
   return (

@@ -14,7 +14,7 @@ export const CursorContext = createContext({} as ContextProps);
 const { Provider } = CursorContext;
 
 export const CursorProvider = ({ children }: { children: ReactChild}) => {
-  const [element, setElement] = useState({
+  const [element, setElement] = useState<PropsElement>({
     type: '',
     text: '',
   });
